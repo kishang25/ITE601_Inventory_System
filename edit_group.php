@@ -14,7 +14,7 @@
 <?php
   if(isset($_POST['update'])){
 
-   $req_fields = array('group-name','group-level');
+   $req_fields = array('group-name','group-level','status');
    validate_fields($req_fields);
    if(empty($errors)){
            $name = remove_junk($db->escape($_POST['group-name']));

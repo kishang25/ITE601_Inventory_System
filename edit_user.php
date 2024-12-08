@@ -14,7 +14,7 @@
 ?>
 
 <?php
-//Update User basic info
+//Update User basic info  
   if(isset($_POST['update'])) {
     $req_fields = array('name','username','level');
     validate_fields($req_fields);
