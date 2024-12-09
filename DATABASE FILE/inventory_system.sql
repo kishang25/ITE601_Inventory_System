@@ -52,19 +52,6 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (14, 'Pet Care'),
 (2, 'Snacks');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `media`
---
-
-CREATE TABLE `media` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `file_name` varchar(255) NOT NULL,
-  `file_type` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `products`
@@ -94,11 +81,11 @@ INSERT INTO `products` (`id`, `name`, `quantity`, `buy_price`, `sale_price`, `ca
 (6, 'Purefoods Tender Juicy Hotdog Regular 1KG', '20', 180.00, 230.00, 9, 0, '2021-04-04 19:13:35'),
 (7, 'Johnie Walker Black Label 1L', '25', 1000.00, 1500.00, 15, 0, '2021-04-04 19:15:38'),
 (8, 'Glade Air Freshener Floral Protection 320ML', '20', 210.00, 265.00, 6, 0, '2021-04-04 19:17:11'),
-(9, 'Disney Woody - Action Figure', '67', 29.00, 55.00, 3, 0, '2021-04-04 19:19:20'),
-(10, 'Hasbro Marvel Legends Series Toys', '106', 219.00, 322.00, 3, 0, '2021-04-04 19:20:28'),
-(11, 'Packing Chips', '78', 21.00, 31.00, 4, 0, '2021-04-04 19:25:22'),
-(12, 'Classic Desktop Tape Dispenser 38', '160', 5.00, 10.00, 8, 0, '2021-04-04 19:48:01'),
-(13, 'Small Bubble Cushioning Wrap', '199', 8.00, 19.00, 4, 0, '2021-04-04 19:49:00');
+(9, 'PureFoods Chicken Breast Nuggets CrispyNJuicy 200g', '80', 98.00, 115.00, 9, 0, '2021-04-04 19:19:20'),
+(10, 'Pet Bed Bolster Ripstop Shiny Large pc', '60', 138.00, 160.00, 14, 0, '2021-04-04 19:20:28'),
+(11, 'Baguio Vegetable Oil Tipid Pack 1.8L Pouch', '50', 220.00, 255.00, 8, 0, '2021-04-04 19:25:22'),
+(12, 'Cetaphil Baby Shampoo 200mL', '60', 350.00, 381.00, 12, 0, '2021-04-04 19:48:01'),
+(13, 'Magnolia Cheddar Cheese 160g', '64', 88.00, 101.00, 5, 0, '2021-04-04 19:49:00');
 
 -- --------------------------------------------------------
 
