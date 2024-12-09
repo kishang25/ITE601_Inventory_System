@@ -3,35 +3,36 @@ body{
   font-weight: 400; 
   overflow-x: hidden;
   overflow-y: auto;
-  background: #FFF5E0;
+  background:rgb(255, 255, 255);
   color: #190933;
   height: 100%;
   width: 100%;
 }a{
-  color: #777;
+  color: #1b1b1b;
   text-decoration: none;
 }.padding-top{
   padding-top: 20px;
 }h1{
-  color: rgb(255, 255, 255);
+  color: rgb(0, 139, 127);
+  font-size: 25px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  padding-top: 2px;
+}h3{
+  color: rgb(255, 251, 251);
+  font-size: px;
 }label.control-label{
   padding-top: 10px;
-  color: white;
+  color: rgba(0, 0, 0, 0.358);
 }.login-page{
-  width: 350px;
-  margin: 5% 40% 6% auto;
-  padding: 0 20px;
-  background-color: #fdbc7111; 
-  border: 1px solid #000000;
-  margin-left: 220px;
-  border-radius: 15px;
+  width: 450px;
+  height: 350px;
+  padding-left: 30px;
+  margin-left: 110px;
+
 }.login-page .text-center{
   margin-bottom: 10px;
 }.box{
   padding: 20px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.393);
   border: 1px solid #f2f2f2;
 }.page{
   position: relative;
@@ -266,9 +267,9 @@ table tfoot tr td:first-child{
   font-weight: normal;
 }
 .form-control{
-  color: #fffdfd;
-  background-color: #a0000041;
-  border: 1px solid #000000;
+  color:rgb(0, 139, 127);  
+  background-color: white;
+  border: 1.50px solid rgb(0, 139, 127);
   border-radius: 3px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -277,15 +278,14 @@ table tfoot tr td:first-child{
   -webkit-transition: all .15s ease-out;
   transition: all .15s ease-out;
 }.form-control:focus{
-  background: #310f14;
-  border-color: #000000;
+  background: rgba(25, 152, 141, 0.511);
+  border-color: rgb(0, 139, 127);
+  color: white;
   outline: 0;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-}
-.btn{
-  border-radius: 3px;
+}.btn{
   -webkit-transition: all 300ms ease-in-out;
   -moz-transition: all 300ms ease-in-out;
    transition: all 300ms ease-in-out;
@@ -308,12 +308,18 @@ table tfoot tr td:first-child{
   background-color:#d0ac2c;
   border-color: #dfba3c;
 }.btn-danger{
-  background-color: #5e1515;
-  border-color: #5e1515;
-  margin-left: 120px;
+  background-color:rgb(0, 139, 127);
+  border-color: rgb(30, 150, 140);
+  color:white;
+  margin-top: 30px;
+  margin-left: 150px;
+  padding: 10px;
+  width: 100px;
+  font-size: 15px;
 }.btn-danger:hover, .btn-danger:focus, .btn-danger.focus, .btn-danger:active, .btn-danger.active{
-  background-color:#3d0b0b;
-  border-color: #3d0b0b;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(0, 139, 127);
+  color:rgb(0, 139, 127);
 }i.glyphicon.glyphicon-home{
   color: #190933;
 }i.glyphicon.glyphicon-duplicate{

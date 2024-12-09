@@ -6,7 +6,8 @@
 <?php include_once('layouts/header.php'); ?>
 <div class="login-page">
     <div class="text-center">
-       <h1>Login</h1>
+       <h1>Login to your Account</h1>
+       <h3>Welcome Back!</h3>
      </div>
      <?php echo display_msg($msg); ?>
       <form method="post" action="auth.php" class="clearfix">
@@ -19,7 +20,7 @@
             <input type="password" name= "password" class="form-control" placeholder="Password">
         </div>
         <div class="form-group">
-                <button type="submit" class="btn btn-danger" style="border-radius:0%">Login</button>
+                <button type="submit" class="btn btn-danger" style="border-radius: 50px;">Login</button>
         </div>
     </form>
 </div>
