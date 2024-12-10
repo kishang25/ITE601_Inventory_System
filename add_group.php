@@ -7,11 +7,13 @@ page_require_level(1);
 // Instantiate the Group class
 $group = new Group($db, $session);
 
+// Handle form submission for adding a new group
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
+    // Call the addGroup method of the Group class
     if ($group->addGroup($_POST)) {
-        redirect('add_group.php', false);
+        redirect('group.php', false); // Redirect to the group list page after successful addition
     } else {
-        redirect('add_group.php', false);
+        redirect('add_group.php', false); // Redirect back to the add group page if adding fails
     }
 }
 ?>

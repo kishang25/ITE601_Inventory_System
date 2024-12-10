@@ -1,65 +1,103 @@
 <?php
-class Group {
+class Group
+{
     private $db;
-    private $session;
+    private $session; // You also need to use $session if you're using session messages
 
-    public function __construct($db, $session) {
-        $this->db = $db;
-        $this->session = $session;
+    // Constructor: Accepts a database connection instance
+    public function __construct($database, $session)
+    {
+        $this->db = $database;
+        $this->session = $session; // Assign the session instance
     }
 
-    public function addGroup($data) {
-        $errors = $this->validateGroup($data);
+    // CREATE: Add a new group
+    public function create($name, $level, $status)
+    {
+        $name   = $this->db->escape($name);
+        $level  = (int)$this->db->escape($level);
+        $status = (int)$this->db->escape($status);
 
-        if (!empty($errors)) {
-            $this->session->msg("d", $errors);
+        $query = "INSERT INTO user_groups (group_name, group_level, group_status) ";
+        $query .= "VALUES ('{$name}', '{$level}', '{$status}')";
+
+        return $this->db->query($query);
+    }
+
+    // READ: Get all groups
+    public function findAll()
+    {
+        $result = $this->db->query("SELECT * FROM user_groups");
+        $groups = [];
+        while ($row = $this->db->fetch_assoc($result)) {
+            $groups[] = $row;
+        }
+        return $groups;
+    }
+
+    // READ: Find a group by ID
+    public function findById($id)
+    {
+        $id = (int)$id;
+        $result = $this->db->query("SELECT * FROM user_groups WHERE id = '{$id}' LIMIT 1");
+
+        if (!$result) {
+            return false; // Query failed
+        }
+        return $this->db->fetch_assoc($result) ?? false;
+    }
+
+    // UPDATE: Update group details
+    public function update($id, $name, $level, $status)
+    {
+        $id     = (int)$id;
+        $name   = $this->db->escape($name);
+        $level  = (int)$this->db->escape($level);
+        $status = (int)$this->db->escape($status);
+
+        $query = "UPDATE user_groups SET 
+                    group_name = '{$name}', 
+                    group_level = '{$level}', 
+                    group_status = '{$status}' 
+                  WHERE id = '{$id}'";
+
+        $result = $this->db->query($query);
+        return $result && $this->db->affected_rows() === 1;
+    }
+
+    // DELETE: Delete a group by ID
+    public function delete($id)
+    {
+        $id = (int)$id;
+        $query = "DELETE FROM user_groups WHERE id = '{$id}'";
+        return $this->db->query($query);
+    }
+
+    // Add Group (Add another method for the same functionality if needed)
+    public function addGroup($data)
+    {
+        // Ensure all required fields are present
+        if (empty($data['group-name']) || empty($data['group-level']) || !isset($data['status'])) {
+            $this->session->msg('d', 'Please fill all the fields');
             return false;
         }
 
-        $name = remove_junk($this->db->escape($data['group-name']));
-        $level = remove_junk($this->db->escape($data['group-level']));
-        $status = remove_junk($this->db->escape($data['status']));
+        $group_name = $this->db->escape($data['group-name']);
+        $group_level = (int)$data['group-level'];
+        $status = (int)$data['status'];
 
-        $query = "INSERT INTO user_groups (group_name, group_level, group_status) VALUES ('{$name}', '{$level}', '{$status}')";
+        // Query to insert new group
+        $query = "INSERT INTO user_groups (group_name, group_level, group_status) VALUES ('{$group_name}', '{$group_level}', '{$status}')";
+        $result = $this->db->query($query);
 
-        if ($this->db->query($query)) {
-            $this->session->msg('s', "Group has been created!");
+        // Check if insertion was successful
+        if ($result && $this->db->affected_rows() === 1) {
+            $this->session->msg('s', 'Group added successfully!');
             return true;
         } else {
-            $this->session->msg('d', "Sorry, failed to create Group!");
+            $this->session->msg('d', 'Failed to add the group!');
             return false;
         }
     }
-
-    private function validateGroup($data) {
-        $errors = [];
-        $req_fields = ['group-name', 'group-level'];
-        foreach ($req_fields as $field) {
-            if (empty($data[$field])) {
-                $errors[] = "Field {$field} cannot be blank.";
-            }
-        }
-
-        if ($this->findByGroupName($data['group-name'])) {
-            $errors[] = "Entered Group Name already exists in the database.";
-        }
-
-        if ($this->findByGroupLevel($data['group-level'])) {
-            $errors[] = "Entered Group Level already exists in the database.";
-        }
-
-        return $errors;
-    }
-
-    private function findByGroupName($name) {
-        $name = $this->db->escape($name);
-        $query = "SELECT * FROM user_groups WHERE group_name = '{$name}' LIMIT 1";
-        return $this->db->query($query)->num_rows > 0;
-    }
-
-    private function findByGroupLevel($level) {
-        $level = (int) $this->db->escape($level);
-        $query = "SELECT * FROM user_groups WHERE group_level = '{$level}' LIMIT 1";
-        return $this->db->query($query)->num_rows > 0;
-    }
 }
+?>
