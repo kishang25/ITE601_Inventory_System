@@ -52,7 +52,18 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (14, 'Pet Care'),
 (2, 'Snacks');
 
+-- --------------------------------------------------------
+--
+-- Table structure for table `media`
+--
 
+CREATE TABLE `media` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `file_type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
 --
 -- Table structure for table `products`
 --
