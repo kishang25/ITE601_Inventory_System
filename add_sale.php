@@ -2,7 +2,7 @@
 $page_title = 'Add Sale';
 require_once('includes/load.php');
 require_once('DBobjects/Sale.php');
-page_require_level(3);
+
 
 $sale = new Sale($db, $session);
 

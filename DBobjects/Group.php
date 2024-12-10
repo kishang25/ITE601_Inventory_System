@@ -99,5 +99,34 @@ class Group
             return false;
         }
     }
+    // EDIT: Wrapper method for editing a group
+public function editGroup($id, $data)
+{
+    // Ensure all required fields are present
+    if (empty($data['group-name']) || empty($data['group-level']) || !isset($data['status'])) {
+        $this->session->msg('d', 'Please fill all the fields');
+        return false;
+    }
+
+    // Sanitize input data
+    $name = $this->db->escape($data['group-name']);
+    $level = (int)$data['group-level'];
+    $status = (int)$data['status'];
+
+    // Use the update method to save changes
+    $result = $this->update($id, $name, $level, $status);
+
+    // Return appropriate success or failure message
+    if ($result) {
+        $this->session->msg('s', 'Group updated successfully!');
+        return true;
+    } else {
+        $this->session->msg('d', 'Failed to update the group!');
+        return false;
+    }
 }
+
+
+}
+
 ?>

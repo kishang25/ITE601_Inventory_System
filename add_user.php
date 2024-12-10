@@ -2,7 +2,7 @@
 $page_title = 'Add User';
 require_once('includes/load.php');
 require_once('DBobjects/User.php');
-page_require_level(1);
+
 
 $user = new User($db, $session);
 $groups = $user->getUserGroups();

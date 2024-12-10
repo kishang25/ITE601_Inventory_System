@@ -2,7 +2,7 @@
   $page_title = 'All Group';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
-   page_require_level(1);
+
   $all_groups = find_all('user_groups');
 ?>
 <?php include_once('layouts/header.php'); ?>
@@ -49,10 +49,10 @@
            </td>
            <td class="text-center">
              <div class="btn-group">
-                <a href="edit_group.php?id=<?php echo (int)$a_group['id'];?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
+                <a href="edit_group.php?id=<?php echo (int)$a_group['id'];?>" class="btn btn-xs btn-warning" title="Edit">
                   <i class="glyphicon glyphicon-pencil"></i>
                </a>
-                <a href="delete_group.php?id=<?php echo (int)$a_group['id'];?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
+                <a href="delete_group.php?id=<?php echo (int)$a_group['id'];?>" class="btn btn-xs btn-danger" title="Remove">
                   <i class="glyphicon glyphicon-remove"></i>
                 </a>
                 </div>

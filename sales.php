@@ -2,7 +2,7 @@
   $page_title = 'All sale';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
-   page_require_level(3);
+
 ?>
 <?php
 $sales = find_all_sale();
@@ -47,10 +47,10 @@ $sales = find_all_sale();
                <td class="text-center"><?php echo $sale['date']; ?></td>
                <td class="text-center">
                   <div class="btn-group">
-                     <a href="edit_sale.php?id=<?php echo (int)$sale['id'];?>" class="btn btn-warning btn-xs"  title="Edit" data-toggle="tooltip">
+                     <a href="edit_sale.php?id=<?php echo (int)$sale['id'];?>" class="btn btn-warning btn-xs"  title="Edit" >
                        <span class="glyphicon glyphicon-edit"></span>
                      </a>
-                     <a href="delete_sale.php?id=<?php echo (int)$sale['id'];?>" class="btn btn-danger btn-xs"  title="Delete" data-toggle="tooltip">
+                     <a href="delete_sale.php?id=<?php echo (int)$sale['id'];?>" class="btn btn-danger btn-xs"  title="Delete" >
                        <span class="glyphicon glyphicon-trash"></span>
                      </a>
                   </div>

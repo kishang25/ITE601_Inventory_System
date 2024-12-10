@@ -1,13 +1,10 @@
 <?php
 $page_title = 'Edit Group';
-require_once('includes/load.php');
+require_once('includes/load.php'); // Load dependencies
 require_once('DBobjects/Group.php');
-// Check user permission
-page_require_level(1);
 
-
-// Instantiate the Group class
-$group = new Group($db);
+// Instantiate the Group class with both $db and $session
+$group = new Group($db, $session);
 
 // Fetch the group by ID
 $group_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
@@ -20,21 +17,16 @@ if (!$e_group) {
 
 // Handle form submission
 if (isset($_POST['update'])) {
-    $name   = remove_junk($_POST['group-name']);
-    $level  = remove_junk($_POST['group-level']);
-    $status = remove_junk($_POST['status']);
+    $result = $group->editGroup($group_id, $_POST);
 
-    // Attempt to update the group
-    $result = $group->update($group_id, $name, $level, $status);
     if ($result) {
-        $session->msg('s', "Group has been updated!");
         redirect('edit_group.php?id=' . $group_id, false);
     } else {
-        $session->msg('d', "Failed to update group.");
         redirect('edit_group.php?id=' . $group_id, false);
     }
 }
 ?>
+
 <?php include_once('layouts/header.php'); ?>
 <div class="login-page">
     <div class="text-center">

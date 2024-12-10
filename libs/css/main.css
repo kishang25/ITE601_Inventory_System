@@ -316,8 +316,10 @@ table tfoot tr td:first-child{
 }.btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active{
   background-color:#27ae60
 }.btn-warning{
-  background-color: #e7c13e;
-  border-color: #dfba3c;
+  background-color: rgb(0, 139, 127);
+  border-color: rgb(0, 139, 127);
+}.btn-warning:hover, .btn-warning:focus, .btn-warning.focus, .btn-warning:active, .btn-warning.active{
+  background-color:#27ae60
 }.btn-danger{
   background-color:rgb(0, 139, 127);
   border-color: rgb(30, 150, 140);

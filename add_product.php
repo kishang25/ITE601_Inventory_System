@@ -2,7 +2,7 @@
 $page_title = 'Add Product';
 require_once('includes/load.php');
 require_once('DBOBJECTS/Product.php');
-page_require_level(2);
+
 
 $product = new Product($db, $session);
 $all_categories = $product->getAllCategories();

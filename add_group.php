@@ -2,9 +2,9 @@
 $page_title = 'Add Group';
 require_once('DBobjects/Group.php');
 require_once('includes/load.php');
-page_require_level(1);
 
-// Instantiate the Group class
+
+// Instantiate the Group classd
 $group = new Group($db, $session);
 
 // Handle form submission for adding a new group
